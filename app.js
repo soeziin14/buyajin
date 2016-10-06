@@ -6,13 +6,15 @@ var  express        = require('express'),
      mongoose       = require("mongoose"),
      bodyParser     = require('body-parser'),
      app            = express();
-
+//mongodb://jin:Rmdwjd14@ds053166.mlab.com:53166/buyajin
 //define routes, set @ line 28.
 var  routes          = require('./routes/index'),
      users           = require('./routes/users'),
      blog            = require('./routes/blog');
 
-mongoose.connect("mongodb://localhost/jin_blog");
+//mongoose.connect("mongodb://localhost/jin_blog");
+mongoose.connect("mongodb://jin:Rmdwjd14@ds053166.mlab.com:53166/buyajin");
+//
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
