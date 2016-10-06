@@ -1,0 +1,38 @@
+<% include ../partials/header%>
+
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <h1><%= post.title%></h1>
+        </div>
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <h4><%= post.exp%></h4>
+        </div>
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>
+                            <%= post.desc %>
+                        </p>
+                        <hr>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 bombfell_html">
+                        <h3>Provided code</h3>
+                        <p>
+                            <%= post.code_before%>
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 bombfell_html">
+                        <h3>"Fixed" code</h3>
+                        <p>
+                            <%= post.code_after%>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%include ../partials/footer%>

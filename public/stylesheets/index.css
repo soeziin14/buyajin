@@ -1,0 +1,165 @@
+h3 {
+    padding-bottom: 30px;
+}
+
+.exp {
+    padding-top: 40%;
+}
+.col-lg-6 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.serious_header {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.serious_header img {
+    height: 50%;
+    width:100%;
+}
+
+.row .col-lg-4 {
+    height: 400px;
+    display:table-cell; vertical-align:middle; text-align:center;
+}
+
+.row .col-lg-4 img{
+    padding-top: 25%;
+    width:300px;
+    height:300px;
+}
+
+.pricing_column .col-lg-4{
+    height: 50px;
+    border-bottom: solid;
+    border-color: #51b666;
+}
+.price1 .row{
+    background-color: darkred;
+    color:#fff;
+}
+
+.price1 .container{
+    width: 400px;
+    height: 400px;
+}
+
+.price2 .row{
+    background-color: darkorange;
+    color:#fff;
+}
+
+.price3 .row{
+    background-color: mediumseagreen;
+    color:#fff;
+}
+.feature {
+    background-color: #222931;
+    height: 500px;
+}
+
+.feature_phrase h2{
+    text-align: center;
+    font-size: 65px;
+    color:white;
+    padding-bottom: 10%;
+}
+.feature_phrase h3{
+    color:white;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 25px;
+}
+.feature_phrase p {
+    display:inline;
+    font-size: 13px;
+    font-weight: 100;
+}
+div.col-lg-6.feature_img {
+    height: 100%;
+}
+.col-lg-6.feature_img img{
+    width: 100%;
+    height: 100%;
+}
+a.btn.btn-warning {
+    margin-top: 10px;
+}
+#linked_in {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.row .heading {
+    text-align: center;
+    margin-top: 10%;
+    height: 60%;
+}
+
+.row .catch_phrase {
+    text-align: center;
+    color: #fff;
+    padding-top: 15%;
+    margin-left: -7.5%;
+}
+
+.row .catch_phrase button h3{
+    padding: 0 0 0 0;
+    text-align: center;
+}
+.catch_phrase h4 {
+    color: coral;
+    padding-top: 10px;
+}
+.row {
+    margin-left: 0px;
+}
+
+.row.fireworks {
+    background-image: url('../images/red_theater.png');
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    height: 95%;
+}
+
+@media(min-width: 100px) and (max-width: 600px) {
+    .row.fireworks {
+        height: 90%;
+    }
+}
+
+.row.image p {
+    font-family: Lora,'Times New Roman',serif;
+}
+
+.pricing {
+    background-color: #51b666;
+    color: white;
+    height: 200px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.row.header {
+    background-color: #51b666;
+    color: white;
+    padding-bottom: 15px;
+    height: 300px;
+}
+.row.header h1 {
+    margin-top: 25px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.row.header h2 {
+    font-style: italic;
+}
+
+.container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+}

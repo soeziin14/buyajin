@@ -1,0 +1,61 @@
+<% include ../partials/header %>
+<link href="/stylesheets/new_form.css" type="text/css" rel="stylesheet" />
+<div class="container">
+        <h1 style="text-align: center">New Post</h1>
+        <div style="margin: 25px auto;">
+            <form action="/blog" method="POST">
+                <div class="form-group" id="title">
+                    <input class="form-control" type="text" name="title" placeholder="Title">
+                </div>
+                <div class="form-group" id="description">
+                    <textarea rows="5" name="exp" placeholder="Talk about the process?"></textarea>
+                </div>
+                <div class="form-group" id="description">
+                    <textarea rows="5" name="desc"placeholder="Provided Instructions:"></textarea>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-6" id="code">
+                        <textarea rows="20" name="code_before" placeholder="Provided code; Tab works for convenience"></textarea>
+                    </div>
+                    <div class="col-lg-6" id="code">
+                        <textarea rows="20" name="code_after" placeholder="Completed code; Tab works for convenience"></textarea>
+                    </div>
+                </div>
+                <div id="buttons">
+                    <div class="form-group">
+                        <button id="button" class="btn btn-lg btn-primary btn-block">Submit</button>
+                    </div>
+                </div>
+                </form>
+                <a href="/blog"><button id="back_button" class="btn btn-lg btn-primary btn-block"><- Back</button></a>
+        </div>
+</div>
+<script>
+    //prevent default tab (skip to next element).
+    $("#code textarea").on('keydown', function (e) {
+        if (e.which == 9) {
+            e.preventDefault();
+            var start = $(this).get(0).selectionStart;
+            var end = $(this).get(0).selectionEnd;
+
+            if (start === end) {
+                $(this).val($(this).val().substring(0, start)
+                        + "\t"
+                        + $(this).val().substring(end));
+                $(this).get(0).selectionStart =
+                        $(this).get(0).selectionEnd = start + 1;
+            } else {
+                var sel = $(this).val().substring(start, end),
+                        find = /\n/g,
+                        count = sel.match(find) ? sel.match(find).length : 0;
+                $(this).val($(this).val().substring(0, start)
+                        + "\t"
+                        + sel.replace(find, "\n\t")
+                        + $(this).val().substring(end, $(this).val().length));
+                $(this).get(0).selectionStart =
+                        $(this).get(0).selectionEnd = end+count+1;
+            }
+        }
+    });
+</script>
+<% include ../partials/footer %>

@@ -1,0 +1,31 @@
+<html>
+<head>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/stylesheets/jin_song_v2.css">
+</head>
+<body>
+<div class="noHope"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2 col-md-2">
+				<button id="myButton" onclick="NextStep(Board);DrawBoard(Board);" type="button" class="btn btn-info btn-lg"> NEXT ? </button>
+			</div>
+			<div class="col-lg-2 col-md-2">
+				<button id="myButton" onclick="setBoardSetup('blinker');" type="button" class="btn btn-primary btn-lg col-lg-3 col-md-3"> BLINKER </button>
+			</div>
+			<div class="col-lg-2 col-md-2">
+				<button id="myButton" onclick="setBoardSetup('glider');" type="button" class="btn btn-primary btn-lg col-lg-3 col-md-3"> GLIDER </button>
+			</div>
+			<div class="col-lg-2 col-md-2">
+				<button id="myButton" onclick="setBoardSetup('flower');" type="button" class="btn btn-primary btn-lg col-lg-3 col-md-3"> FLOWER </button>
+			</div>
+			<div class="col-lg-2 col-md-2">
+				<button id="myButton" onclick="Automatic()" type="button" class="btn btn-danger btn-lg col-lg-3 col-md-2"> AUTO/STOP</button>
+			</div>
+		</div>
+	</div>
+	<div id="board"></div>
+
+	<script type="text/javascript" src="/javascripts/jin_song_v2.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<%include ../partials/header%>
+<link href="/stylesheets/blog.css" type="text/css" rel="stylesheet" />
+
+<div class="container header">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="heading">
+                <h1>A Start to Problem Solving.</h1>
+                <hr>
+                <h3 style="color:white;">To tire my brain and blog.</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="new_button">
+    <a href="/blog/new">
+        <img src="../images/compose.png" alt="">
+    </a>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post">
+                <h1>First Story.</h1>
+                <h4>On September 19, 2016, I was interviewed by Bombfell inc. Without any specific experience
+                    of...being utterly defeated in coding exercise, I was lenient enough to think that there was no need
+                    to practice problem solving. </h4>
+                <hr>
+                <img src="../images/bombfell_problem.png" alt="">
+                <div id="show_button">
+                    <a href="/blog/show_default" id="show_button" class="btn btn-primary">More Info</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <% posts.forEach(function(post){ %>
+        <div class="container post_container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post">
+                        <h1><%= post.title%></h1>
+                        <h4><%= post.exp%></h4>
+                        <hr>
+                        <h4><%= post.des%></h4>
+                    </div>
+                    <div id="show_button" style="margin-top: 15px;">
+                        <a href="/blog/<%= post._id %>" id="show_button" class="btn btn-primary">More Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+<%include ../partials/footer%>

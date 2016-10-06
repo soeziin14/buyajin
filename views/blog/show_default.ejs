@@ -1,0 +1,99 @@
+<% include ../partials/header%>
+<!-- This is a "seed" that I always want to have default. Plus to have more "ideal" post with images later.-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post">
+                <h1>First Story.</h1>
+                <h4>On September 19, 2016, I was interviewed by Bombfell inc. Without any specific experience
+                    of...being utterly defeated in coding exercise, I was lenient enough to think that there was no need
+                    to practice problem solving. </h4>
+                <hr>
+                <img src="../images/bombfell_problem.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row panel-body">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Day 1</a></li>
+            <li><a href="#tab2" data-toggle="tab">Day 2</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p>
+                                At my first timed assessment, I panicked. I couldn't even think how I should
+                                go about to debug the flawed html file. Around 15 minutes mark, I finally began
+                                to use the developer console and assess the problem in a better direction.
+
+                                I applied the conditions (cells wrap around edges and could be come alive if they have
+                                2 or three neighboring cells that are alive), but some cells continued to wrongly
+                                become alive.
+                            </p>
+                            <p>
+                                Unfortunately, by that time, my hour has run out. At this point, I was wondering
+                                what had gone wrong compared to other interviews I have done before. The problem
+                                wasn't particularly difficult, the assessment was clearly looking whether I would
+                                quickly pickup the developer console to debug quickly and pick out the few
+                                possible parts of the code that was hindering the desired result. And for some reason,
+                                I couldn't do that.
+                            </p>
+                            <hr>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 bombfell_html">
+                            <h3>Provided html</h3>
+                            <img src="../images/bombfell_html1.png" alt="">
+                        </div>
+                        <div class="col-lg-6 col-md-6 bombfell_html">
+                            <h3>"Fixed" html</h3>
+                            <img src="../images/bombfell_jin1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p>
+                                Recruiters frequently ask me the question: "Jin, what would you say is your strongest
+                                point?"
+                                <br>
+                                I always answer: "I am probably not the smartest nor the most experienced
+                                candidate. But I can guarantee persistent energy."
+                            </p>
+                            <p>
+                                I chose to stay true to those words. With not being able to debug simple error,
+                                I was definitely off the candidate list. But due to the unbearable feeling that I
+                                was so hopeless when solving this problem, and that I wasn't able to show my
+                                'persistent energy', I decided to continue to work on it (and keep my minimal
+                                front-end skills in check).
+                                <br>
+                                <br>
+                                The following is the result. It is working, but there still are improvements that
+                                could be made.
+                                <br>
+                                <br>
+                                1. Octagonal grids would be awesome, reflecting on how a "cell" has 8 neighbors. The
+                                octagonal grid itself could be done in css, but applying the Next() logic would be quite tricky.
+                                <br>
+                                2. Other states than alive & dead. I wanted to add "possible-to-be-alive" state and
+                                "no hope" state for cells that was not in proximity of even one live cell.
+                            </p>
+                            <hr>
+                            <%include ../jin_song_v2.html%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%include ../partials/footer%>

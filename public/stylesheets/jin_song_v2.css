@@ -1,0 +1,18 @@
+.square {
+	width: 5%;
+	padding-bottom: 5%;
+	float: left;
+	margin: 0.5%;
+}
+
+#board {
+	margin: 20px auto;
+	max-width: 800px;
+	clear: both;
+}
+
+
+#myButton {
+	width: 190px;
+	margin-left: 20%;
+}

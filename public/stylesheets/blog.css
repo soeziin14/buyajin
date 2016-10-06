@@ -1,0 +1,70 @@
+.container-fluid {
+    font-family: 'Baloo Bhai', cursive;
+}
+
+.container.header {
+    background-image: url('../images/close_up_code.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 390px;
+}
+
+.post_container {
+    margin-bottom: 50px;
+}
+.heading {
+    padding-top: 130px;
+    color: white;
+    text-align: center;
+}
+
+#show_button {
+    width: 250px;
+    text-align: center;
+    margin-left: 25%;
+}
+
+#new_button {
+    position: fixed;
+    bottom: 75px;
+    right: 75px;
+    z-index: 2;
+}
+
+#new_button a img {
+    width: 50px;
+    height: 50px;
+}
+.bombfell_html {
+    text-align: center;
+    padding-right: 50px;
+}
+
+.bombfell_html h3 {
+    padding-left: 150px;
+}
+.bombfell_html img {
+}
+
+p {
+    padding-top: 50px;
+    font-family: Lora,'Times New Roman',serif;
+    font-size: 20px;
+}
+.post h1, h2, h3, h4 {
+    font-weight: 800;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: black;
+}
+
+.post h4 {
+    margin-top: 30px;
+}
+
+.nav-tabs>li {
+    width: 50%;
+}
+
+.nav-tabs>li>a {
+    width: 100%;
+}
