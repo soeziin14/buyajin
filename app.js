@@ -11,7 +11,7 @@ var  routes          = require('./routes/index'),
      users           = require('./routes/users'),
      blog            = require('./routes/blog');
 
-//mongoose.connect("mongodb://localhost/jin_blog");
+////mongoose.connect("mongodb://localhost/jin_blog");
 mongoose.connect("mongodb://jin:Rmdwjd14@ds053166.mlab.com:53166/buyajin");
 //
 // view engine setup
