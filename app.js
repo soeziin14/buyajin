@@ -1,11 +1,4 @@
 var  express        = require('express'),
-<<<<<<< HEAD
-=======
-     path           = require('path'),
-     logger         = require('morgan'),
-     cookieParser   = require('cookie-parser'),
-     mongoose       = require("mongoose"),
->>>>>>> c8a43c92ad6646a8a0325de4b9de3779b13262be
      bodyParser     = require('body-parser'),
      methodOverride = require('method-override'),
      mongoose       = require("mongoose"),
