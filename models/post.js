@@ -1,11 +1,13 @@
 var mongoose = require("mongoose");
 
 var postSchema = new mongoose.Schema({
-    title: String,
+    title: {type: String, required: true},
     exp: String,
-    desc: String,
-    code_before: String,
-    code_after: String
-});
+    img: String,
+    comment: String,
+}, {
+    timestamps: true
+    }
+);
 
 module.exports = mongoose.model("post", postSchema);

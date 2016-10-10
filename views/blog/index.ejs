@@ -1,13 +1,14 @@
-<%include ../partials/header%>
+<%include ../partials/blog_header%>
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 <link href="/stylesheets/blog.css" type="text/css" rel="stylesheet" />
 
 <div class="container header">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="heading">
-                <h1>A Start to Problem Solving.</h1>
+                <h1>Jin's Blog</h1>
                 <hr>
-                <h3 style="color:white;">To tire my brain and blog.</h3>
+                <h3 style="color:white;">Web Dev + Problem Solving.</h3>
             </div>
         </div>
     </div>
@@ -20,21 +21,20 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="post">
-                <h1>First Story.</h1>
-                <h4>On September 19, 2016, I was interviewed by Bombfell inc. Without any specific experience
-                    of...being utterly defeated in coding exercise, I was lenient enough to think that there was no need
-                    to practice problem solving. </h4>
-                <hr>
-                <img src="../images/blog/bombfell_problem.png" alt="">
-                <div id="show_button">
-                    <a href="/blog/show_default" id="show_button" class="btn btn-primary">More Info</a>
-                </div>
-            </div>
+            <div class="post_header">
+                <h1>Latest Blogging.</h1>
         </div>
     </div>
 </div>
-
+    <% if (posts.length == 0) {%>
+        <div class="container no_posts text-center">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <h1>No BLOGGINGS YET =(</h1>
+                </div>
+            </div>
+        </div>
+    <%}%>
     <% posts.forEach(function(post){ %>
         <div class="container post_container">
             <div class="row">
