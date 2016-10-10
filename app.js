@@ -1,9 +1,9 @@
 var  express        = require('express'),
-     path           = require('path'),
-     logger         = require('morgan'),
-     cookieParser   = require('cookie-parser'),
-     mongoose       = require("mongoose"),
      bodyParser     = require('body-parser'),
+     methodOverride = require('method-override'),
+     mongoose       = require("mongoose"),
+     multer         = require("multer"),
+     path           = require('path'),
      app            = express();
 //mongodb://jin:Rmdwjd14@ds053166.mlab.com:53166/buyajin
 //define routes, set @ line 28.
@@ -20,10 +20,9 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Set routes

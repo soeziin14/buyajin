@@ -1,3 +1,22 @@
 .show_header {
     margin-top: 50px;
 }
+
+.btn-warning , .btn-danger{
+    font-size: 25px;
+    width: 150px;
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size : 55px;
+}
+
+h3 {
+    font-family: 'Baloo Bhai', cursive;
+}
+h2,h4 {
+    font-weight: 800;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: black;
+}
