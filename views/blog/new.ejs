@@ -1,40 +1,56 @@
 <% include ../partials/blog_header %>
 <link href="/stylesheets/new_form.css" type="text/css" rel="stylesheet" />
-<div class="container new_form_header">
-        <h1 style="text-align: center">New Post</h1>
-        <div style="margin: 25px auto;">
-            <form id="uploadForm" action="/blog" method="POST" enctype="multipart/form-data">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="form-group" id="title">
-                        <input class="form-control" type="text" name="title" placeholder="Title" required>
-                    </div>
-                    <div class="form-group" id="description">
-                        <textarea rows="5" name="desc" placeholder="Description:"></textarea>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-lg-6">
-                            <input type="file" name="image" id="image" onchange="preloadImg(this);"/>
-                            <img class="img-responsive" id="preload" src="#"/>
+    <div class="container new_form_header">
+            <h1 style="text-align: center">New Post</h1>
+            <div style="margin: 25px auto;">
+                <form id="uploadForm" action="/blog" method="POST" enctype="multipart/form-data">
+                    <div class="col-lg-12">
+                        <div class="form-group" id="title">
+                            <input type="text" name="title" placeholder="Title for your post.">
                         </div>
-                        <div class="col-lg-6">
-                            <textarea rows="10" name="comment" placeholder="Comment:"></textarea>
+                        <div class="form-group" id="description">
+                            <textarea rows="5" name="desc" placeholder="Description:"></textarea>
+                        </div>
+                        <div id="image_comment">
+
                         </div>
                     </div>
-                </div>
-                <div id="buttons">
-                    <div class="form-group">
-                        <button id="button" class="btn btn-lg btn-primary btn-block">Submit</button>
+                    <div id="buttons">
+                            <button id="button" class="btn btn-lg btn-primary btn-block">Submit</button>
                     </div>
-                </div>
-                <span id = "status"></span>
-                </form>
-                <a href="/blog"><button id="back_button" class="btn btn-lg btn-primary btn-block">Back</button></a>
+                    </form>
+            </div>
+        <div class="back_add_btns">
+            <a href="/blog"><button id="back_button" class="btn btn-lg btn-warning btn-block">Back</button></a>
         </div>
-</div>
+    </div>
+<a style="position:fixed;bottom:50px;right:50px;margin:0;padding:5px 3px;" href="#">
+    <button id="add_button" class="btn btn-lg btn-primary">+</button></a>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
 <script>
 
+    $("#add_button").click(function() {
+
+        $("#image_comment").append(
+                '<div class="form-group row image_comment">'+
+//                    '<div class="col-lg-1">'+
+//                        '<button class="btn btn-danger" id="delete_button">Delete</button>'+
+//                    '</div>'+
+                    '<div class="col-lg-6" photo>'+
+                        '<input type="file" name="image" onchange="preloadImg(this);"/>'+
+                        '<img class="" id="preload" src="#"/>'+
+                    '</div>'+
+                    '<div class="col-lg-6 comment">'+
+                        '<textarea rows="10" name="comment" placeholder="Comment:"></textarea>'+
+                    '</div>'+
+                '</div>'
+        )
+    });
+
+//    $("#delete_button").on('click', '.remove', function() {
+//        $(this).parent(".row").remove();
+//    });
 
     function preloadImg(input) {
         if (input.files && input.files[0]) {
@@ -43,8 +59,8 @@
             reader.onload = function (e) {
                 $('#preload')
                         .attr('src', e.target.result)
-                        .width(150)
-                        .height(200);
+                        .width('100%')
+                        .height('100%');
             };
 
             reader.readAsDataURL(input.files[0]);

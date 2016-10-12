@@ -36,7 +36,10 @@ router.post('/', function(req, res){
         } else {
             var title = req.body.title;
             var exp = req.body.exp;
-            var img = req.file.path.substring("public".length);//BAD, but temporary...
+            var img;
+            if (req.file) {
+                img = req.file.path.substring("public".length);//BAD, but temporary...
+            }
             var comment = req.body.comment;
             var newPost = {title: title, exp:exp, img: img, comment: comment};
             // Create a new Post and save to DB
