@@ -8,7 +8,7 @@
                 <input class="form-control" type="text" name="title" value="<%= post.title %>">
             </div>
             <div class="form-group" id="description">
-                <textarea rows="5" name="exp" value="<%= post.exp %>"></textarea>
+                <textarea rows="5" name="exp" value="<%= post.exp %>"><%= post.exp %></textarea>
             </div>
 
             <% post.img.forEach(function(img, index) { console.log("post: ", post, post.title)%>
