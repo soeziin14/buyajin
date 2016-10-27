@@ -1,11 +1,18 @@
 <% include ../partials/blog_header%>
 <link href="/stylesheets/show.css" type="text/css" rel="stylesheet" />
+
+<div class="btn-group">
+    <a class="btn btn-xs btn-warning" href="/blog/<%=  post._id %>/edit">Edit</a>
+    <form id="delete-post" action="/blog/<%= post._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-xs btn-danger">Delete</button>
+    </form>
+</div>
     <div class="row show_header">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
             <h1><%= post.title%></h1>
         </div>
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <h4><%= post.exp%></h4>
+            <h3><%= post.exp%></h3>
         </div>
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="container">
@@ -17,25 +24,22 @@
                     </div>
 
                 </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 bombfell_html">
-                        <img class="img-responsive" src="<%= post.img%>" alt="">
+                <% if (post.img)
+                    {post.img.forEach(function(img, index) {%>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 bombfell_html">
+                            <img class="img-responsive" src="<%= img%>" alt="">
+                        </div>
+                        <div class="col-lg-6 col-md-6 bombfell_html">
+                            <p><%= post.comment[index] %></p>
+                        </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 bombfell_html">
-                        <h3>Comments</h3>
-                        <p><%= post.comment %></p>
-                    </div>
-                </div>
-                <p style="font-style:italic; font-size: 15px;">
-                    posted <%= post.createdAt.toDateString()%>
-                </p>
-                <hr>
-
-                        <a class="btn btn-xs btn-warning" href="/blog/<%=  post._id %>/edit">Edit</a>
-                        <form id="delete-post" action="/blog/<%= post._id %>?_method=DELETE" method="POST">
-                            <button class="btn btn-xs btn-danger">Delete</button>
-                        </form>
-
+                    <p style="font-style:italic; font-size: 15px;">
+                        posted <%= post.createdAt.toDateString()%>
+                    </p>
+                    <hr>
+                    <% });
+                }%>
             </div>
         </div>
     </div>
