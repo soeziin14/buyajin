@@ -15,7 +15,7 @@ var storage = multer.diskStorage({
         cb(null, file.originalname)
     }
 });
-var upload = multer({storage: storage}).single("image");
+var upload = multer({storage: storage}).array("image", 3);
 /* GET users listing. */
 router.get('/', function(req, res) {
     Post.find({}, function(err, allPosts){
@@ -34,10 +34,22 @@ router.post('/', function(req, res){
         if (err) {
             res.send("error loading file");
         } else {
-            var title = req.body.title;
-            var exp = req.body.exp;
-            var img = req.file.path.substring("public".length);//BAD, but temporary...
-            var comment = req.body.comment;
+            var title   = req.body.title;
+            var exp     = req.body.exp;
+            var img     = [];
+            var comment = [];
+
+            if (req.file) {
+                img.push(req.file.path.substring("public".length));//BAD, but temporary...
+            }
+
+            if (req.files) {
+                req.files.forEach(function(e, index){
+                    img.push(e.path.substring("public".length));
+                    comment.push(req.body.comment[index]);
+                })
+            }
+
             var newPost = {title: title, exp:exp, img: img, comment: comment};
             // Create a new Post and save to DB
             Post.create(newPost, function(err, newlyCreated){
@@ -89,19 +101,28 @@ router.get('/:id/edit', function(req,res) {
 });
 
 //update post
-router.get('/:id', function(req,res) {
-    Post.findByIdAndUpdate(req.params.id, req.body.post, function (err, foundPost) {
+router.put('/:id', function(req,res) {
+
+    var title   = req.body.title;
+    var exp     = req.body.exp;
+
+    //bodyparser issue with multipart html forms, so for now, we cannot change images.
+    var editedPost = {title: title, exp:exp, comment: req.body.comment};
+
+    Post.findByIdAndUpdate(req.params.id, editedPost, function (err, foundPost) {
+
+        editedPost.img = foundPost.img;
+
         if (err) {
             console.log(err);
             res.redirect("/blog");
         } else {
-            console.log(foundPost);
+            console.log("update post:", req.body.title);
             //render show template with that campground
-            res.redirect("blog/" + req.params.id);
+            res.redirect("/blog/" + req.params.id);
         }
     });
 });
-
 
 //delete post
 router.delete('/:id', function(req,res) {
@@ -110,6 +131,12 @@ router.delete('/:id', function(req,res) {
             console.log(err);
             res.redirect("/blog");
         } else {
+            if (foundPost && foundPost.img) {
+                foundPost.img.forEach(function(img){
+                    //console.log("img: ", img);
+                    fs.unlink('./public/'+img);
+                });
+            }
             res.redirect("/blog");
         }
     });

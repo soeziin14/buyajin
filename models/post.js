@@ -3,8 +3,8 @@ var mongoose = require("mongoose");
 var postSchema = new mongoose.Schema({
     title: {type: String, required: true},
     exp: String,
-    img: String,
-    comment: String,
+    img: [],
+    comment: [],
 }, {
     timestamps: true
     }

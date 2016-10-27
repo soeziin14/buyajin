@@ -2,9 +2,13 @@
     margin-top: 50px;
 }
 
+.btn-group {
+    position: absolute;
+    left: 90%;
+}
 .btn-warning , .btn-danger{
     font-size: 25px;
-    width: 150px;
+    width: 100px;
 }
 
 h1 {
