@@ -24,3 +24,7 @@ h2,h4 {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: black;
 }
+#back_button {
+    width: 150px;
+    float: left;
+}
