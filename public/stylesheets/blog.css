@@ -3,10 +3,47 @@
 }
 
 .container.header {
-    background-image: url('../images/blog/close_up_code.jpg');
-    background-size: cover;
+    background-image: url('http://blog.hdwallsource.com/wp-content/uploads/2016/01/funny-screensavers-21465-22004-hd-wallpapers.jpg');
+    background-size: 100% 100%;
     width: 100%;
     height: 390px;
+}
+
+/* Latest Blogs, three image circles*/
+.marketing .row {
+    display: flex;
+}
+
+.marketing .col-lg-4 {
+    margin-bottom: 20px;
+    text-align: center;
+    align-items: stretch;
+}
+
+.marketing h2 {
+    font-weight: normal;
+}
+.marketing .col-lg-4 p {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.marketing a {
+    position: absolute;
+    right: 36%;
+    bottom: 0;
+}
+/* Featurettes
+------------------------- */
+
+.post-divider {
+    margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.post-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -1px;
 }
 
 .post_container {
@@ -35,16 +72,6 @@
     width: 50px;
     height: 50px;
 }
-.bombfell_html {
-    text-align: center;
-    padding-right: 50px;
-}
-
-.bombfell_html h3 {
-    padding-left: 150px;
-}
-.bombfell_html img {
-}
 
 .no_posts {
     font-size: 80px;
@@ -60,6 +87,7 @@ p {
 }
 .post_header h1 {
     font-family: 'Oswald', sans-serif;
+    margin-bottom: 50px;
 }
 .post h1, h2, h3, h4 {
     font-weight: 800;

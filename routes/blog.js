@@ -32,13 +32,13 @@ router.post('/', function(req, res){
     upload(req, res, function(err) {
 
         if (err) {
-            res.send("error loading file");
+            res.send("error loading file: " + err);
         } else {
             var title   = req.body.title;
             var exp     = req.body.exp;
             var img     = [];
             var comment = [];
-
+            console.log("file: ", req.file || req.files);
             if (req.file) {
                 img.push(req.file.path.substring("public".length));//BAD, but temporary...
             }
@@ -101,17 +101,17 @@ router.get('/:id/edit', function(req,res) {
 });
 
 //update post
-router.put('/:id', function(req,res) {
-
-    var title   = req.body.title;
-    var exp     = req.body.exp;
+router.put('/:id',function(req,res) {
 
     //bodyparser issue with multipart html forms, so for now, we cannot change images.
-    var editedPost = {title: title, exp:exp, comment: req.body.comment};
 
-    Post.findByIdAndUpdate(req.params.id, editedPost, function (err, foundPost) {
-
-        editedPost.img = foundPost.img;
+    Post.findByIdAndUpdate(req.params.id,
+        {"$set": {
+            "title": req.body.title,
+            "exp"  : req.body.exp,
+            "comment": req.body.comment
+        }},
+        function (err, foundPost) {
 
         if (err) {
             console.log(err);
@@ -134,7 +134,9 @@ router.delete('/:id', function(req,res) {
             if (foundPost && foundPost.img) {
                 foundPost.img.forEach(function(img){
                     //console.log("img: ", img);
-                    fs.unlink('./public/'+img);
+                    if(fs.existsSync('./public/'+img)) {
+                        fs.unlink('./public/'+img);
+                    }
                 });
             }
             res.redirect("/blog");
