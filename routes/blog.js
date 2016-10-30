@@ -5,7 +5,51 @@ var express     = require('express'),
     router      = express.Router(),
     fs          = require('fs'),
     multer      = require('multer'),
-    Post        = require("../models/post");
+    middleware  = require("../middleware"),
+    passport    = require("passport"),
+    Post        = require("../models/post"),
+    User        = require('../models/user');
+
+/* LOG IN && AUTH */
+// show register form
+router.get("/register", function(req, res){
+    res.render("blog/register");
+});
+
+//handle sign up logic
+router.post("/register", function(req, res){
+    var newUser = new User({username: req.body.username});
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            req.flash("error", err.message);
+            return res.render("blog/register");
+        }
+        passport.authenticate("local")(req, res, function(){
+            req.flash("success", "Welcome to Jin's blog " + user.username);
+            res.redirect("/blog");
+        });
+    });
+});
+
+//show login form
+router.get("/login", function(req, res){
+    res.render("blog/login");
+});
+
+//handling login logic
+router.post("/login", passport.authenticate("local",
+    {
+        successRedirect: "/blog",
+        failureRedirect: "/login"
+    }), function(req, res){
+});
+
+// logout route
+router.get("/logout", function(req, res){
+    req.logout();
+    req.flash("success", "Logged you out!");
+    res.redirect("/blog");
+});
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -15,10 +59,13 @@ var storage = multer.diskStorage({
         cb(null, file.originalname)
     }
 });
-var upload = multer({storage: storage}).array("image", 3);
+var upload = multer({storage: storage,
+                     limits : {fileSize: 1024 * 1024 * 10 //limit file size to 10 megabytes.
+                     }}).array("image", 3);
+
 /* GET users listing. */
 router.get('/', function(req, res) {
-    Post.find({}, function(err, allPosts){
+    Post.find({}, null, {sort: {"createdAt": -1}}, function(err, allPosts){
         if(err){
             console.log(err);
         } else {

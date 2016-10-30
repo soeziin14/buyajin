@@ -49,8 +49,15 @@
                     <a href="#page-top"></a>
                 </li>
                 <li>
-                    <a href="/todo">ToDo</a>
+                    <a href="/blog">BLOG</a>
                 </li>
+                <% if(!currentUser){ %>
+                    <li><a href="/blog/login">Login</a></li>
+                    <li><a href="/blog/register">Sign Up</a></li>
+                <% } else { %>
+                    <li><a href="#">Signed In As <%= currentUser.username %></a></li>
+                    <li><a href="/blog/logout">Logout</a></li>
+                <% } %>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
