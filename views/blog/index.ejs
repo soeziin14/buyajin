@@ -55,6 +55,7 @@
                 <div class="col-md-7">
                     <h2 class="post-heading"> <%= post.title %></h2>
                     <p class="lead"><%= post.exp %></p>
+                    <p><a class="btn btn-default" href="/blog/<%= post._id %>" role="button">View details &raquo;</a></p>
                 </div>
                 <div class="col-md-5">
                     <img class="post-image img-responsive center-block" src="<%= post.img[0] %>" alt="No image">
