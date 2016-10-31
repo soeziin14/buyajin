@@ -1,7 +1,8 @@
 /**
  * Created by JS on 10/29/2016.
  */
-
+var Post = require("../models/post");
+var feedback = require("../models/feedback");
 // all the middleare goes here
 var middlewareObj = {};
 

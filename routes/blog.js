@@ -74,7 +74,7 @@ router.get('/', function(req, res) {
     });
 });
 
-router.post('/', function(req, res){
+router.post('/', middleware.isLoggedIn, function(req, res){
 
     upload(req, res, function(err) {
 
@@ -84,6 +84,10 @@ router.post('/', function(req, res){
             var title   = req.body.title;
             var exp     = req.body.exp;
             var img     = [];
+            var author  = {
+                id      : req.user._id,
+                username: req.user.username
+            }
             var comment = [];
             console.log("file: ", req.file || req.files);
             if (req.file) {
@@ -97,7 +101,7 @@ router.post('/', function(req, res){
                 })
             }
 
-            var newPost = {title: title, exp:exp, img: img, comment: comment};
+            var newPost = {title: title, exp:exp, img: img, author: author, comment: comment};
             // Create a new Post and save to DB
             Post.create(newPost, function(err, newlyCreated){
                 if(err){
@@ -112,13 +116,8 @@ router.post('/', function(req, res){
     });
 });
 
-router.get('/new', function(req, res){
+router.get('/new', middleware.isLoggedIn, function(req, res){
     res.render('blog/new');
-});
-
-
-router.get('/show_default', function(req,res){
-    res.render("blog/show_default");
 });
 
 //show post
@@ -135,7 +134,7 @@ router.get('/:id', function(req,res) {
 });
 
 //edit post
-router.get('/:id/edit', function(req,res) {
+router.get('/:id/edit', middleware.checkPostOwnership, function(req,res) {
     Post.findById(req.params.id, function (err, foundPost) {
         if (err) {
             console.log(err);
@@ -148,7 +147,7 @@ router.get('/:id/edit', function(req,res) {
 });
 
 //update post
-router.put('/:id',function(req,res) {
+router.put('/:id', middleware.checkPostOwnership, function(req,res) {
 
     //bodyparser issue with multipart html forms, so for now, we cannot change images.
 
@@ -172,7 +171,7 @@ router.put('/:id',function(req,res) {
 });
 
 //delete post
-router.delete('/:id', function(req,res) {
+router.delete('/:id', middleware.checkPostOwnership, function(req,res) {
     Post.findByIdAndRemove(req.params.id, function (err, foundPost) {
         if (err) {
             console.log(err);
